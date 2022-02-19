@@ -1,5 +1,23 @@
 // Assignment code here
 
+function getRandomLowCase() {
+  
+}
+
+function getRandomUpCase() {
+  
+}
+
+function getRandomNumber() {
+  
+}
+
+function getRandomSpecial() {
+  
+}
+
+console.log(string.fromCharCode(97));
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
