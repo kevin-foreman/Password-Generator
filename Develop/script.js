@@ -27,12 +27,8 @@ var generatePassword = function(password, passwordArray) {
   var numbers_choice = confirm("Select 'OK' if you would like to include numbers");
   var upCaseLetters_choice = confirm("Select 'OK' if you would like to include uppercase letters");
   var lowCaseLetters_choice = confirm("Select 'OK' if you would like to include lowercase letters");
-  if (specials_choice.confirm, numbers_choice, upCaseLetters_choice, lowCaseLetters_choice === "" || specials_choice, numbers_choice, upCaseLetters_choice, lowCaseLetters_choice === null) {
-    alert("You need to select at least one parameter. Please try again.")
-    return generatePassword;
-  }
   
-  
+    
   // Function to concat all possible true options and pass them to the password variable
 var passwordArray = []
 if (specials_choice) {
@@ -46,11 +42,17 @@ if (upCaseLetters_choice) {
 }  
 if (lowCaseLetters_choice) { 
   passwordArray = passwordArray.concat(lowCaseLetters)
-}  
+} 
+
 
 // Loop to assign random characters  
 while (password.length < passwordLength) {
       password += passwordArray[Math.floor(Math.random() * passwordArray.length)];
+
+      // validate if the user made no selections for the parameters
+      if (specials_choice === false && numbers_choice === false && upCaseLetters_choice === false && lowCaseLetters_choice === false) {
+        alert("You need to I select at least one parameter. Please try again.")
+      };         
 }
     
   
