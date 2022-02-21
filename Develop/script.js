@@ -11,7 +11,7 @@ var upCaseLetters = lowCaseLetters.map(letter => letter.toUpperCase())
 var generatePassword = function(password, passwordParameters) {
 
   var password = "";
-  var passwordArray = "";
+  var passwordParamters = "";
   // Prompt user to set password length
   while (true) {
     passwordLength = parseInt(prompt("Set the length of your password between 18 and 36 characters"));
@@ -23,15 +23,12 @@ var generatePassword = function(password, passwordParameters) {
     alert("Please select a number between 18 - 36");
   }
   // Once user has chosen a valid number, they will choose the rest of the parameters
-  specials = confirm("Select 'OK' if you would like to include special characters");
-  numbers = confirm("Select 'OK' if you would like to include numbers");
-  upCaseLetters = confirm("Select 'OK' if you would like to include uppercase letters");
-  lowCaseLetters = confirm("Select 'OK' if you would like to include lowercase letters");
-  if (confirm.specials, numbers, upCaseLetters, lowCaseLetters === '' || confirm.specials, numbers, upCaseLetters, lowCaseLetters === null) {
-      alert("You must select at least one parameter, please try again.");
-      return generatePassword;
-  }
-
+  var specialsChoice = confirm("Select 'OK' if you would like to include special characters");
+  var numbersChoice = confirm("Select 'OK' if you would like to include numbers");
+  var upCaseLettersChoice = confirm("Select 'OK' if you would like to include uppercase letters");
+  var lowCaseLettersChoice = confirm("Select 'OK' if you would like to include lowercase letters");
+  
+  
   // Function to concat all possible true options and pass them to the password variable
 var passwordArray = []
 if (specials) 
@@ -42,14 +39,8 @@ if (upCaseLetters)
   passwordArray.concat(upCaseLetters)
 if (lowCaseLetters) 
   passwordArray.concat(lowCaseLetters)
-    // else alert("You must select at least one parameter, please try again.")
 
-    // For loop to select random characters from the parameters
-    
-    // for (var i = 0; i < passwordLength; i++) {
-      // password += passwordParameters[Math.floor(Math.random() * passwordParameters.length)]
-    // }
-
+  
     while (password.length < passwordLength) {
       password += passwordArray[Math.floor(Math.random() * passwordArray.length)];
     }
