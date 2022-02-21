@@ -1,102 +1,61 @@
-// Assignment code here
+// Assignment Code here
 
-/*
-var randomCharacter = {
-  upper: getRandomUpCase,
-  lower: getRandomLowCase,
-  number: getRandomNumber,
-  special: getRandomSpecial,
-
-}
-// Random character selector
-var getRandomLowCase = function() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) +97)
-}
-
-var getRandomUpCase = function() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) +65)
-}
-
-var getRandomNumber = function() {
-  return String.fromCharCode(Math.floor(Math.random() * 10) +48)
-}
-
-var getRandomSpecial = function() {
-  var special = '!@#$%^&*()[]{}=+<>/,.';
-  return special[Math.floor(Math.random() * special.length)];
-}
-*/
-
+// Password parameters
 var numbers = [1,2,3,4,5,6,7,8,9,0];
-var special = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"]
+var specials = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"];
 var letters = Array.from(Array(26)).map( (_, i) => i + 97);
-var LowCaseLetters = letters.map(code => String.fromCharCode(code));
-var UpCaseLetters = LowCaseLetters.map(letter => letter.toUpperCase())
+var lowCaseLetters = letters.map(code => String.fromCharCode(code));
+var upCaseLetters = lowCaseLetters.map(letter => letter.toUpperCase())
 
-// Generate password function
-var generatePassword = function(length, hasNumbers, hasLowercase, hasUppercase, hasSymbols) {
-  // prompt user to specify password length
- var promptLength = window.prompt("Please specify a password length between 18 and 36 characters. This password generator will prioritize length over complexity, so if you select only one character parameter your password will not be the strongest it can be.");
+// Generate function
+var generatePassword = function(password, passwordParameters) {
 
- // function isLetter(str) {
-   // return str.length === 1 && str.match(/[a-z]/i);
- // }
-
- if (promptLength === "" || promptLength === null) {
-  window.alert("You need to specify a length! Please try again.");
-  return generatePassword();
- }
-
- if (promptLength < 17 || promptLength > 35) {
-   window.alert("You need to specify a length within the range. Please try again.");
-   return generatePassword();
- }
-
- if (promptLength === ) {
-   window.alert("You need to specify a number between 18 and 36. Please try again");
-   return generatePassword();
- }
-
-  // prompt user to specify upper case letters or not
- var promptUpper = window.prompt("Do you want to include upper case letters? 1 for yes, 2 for no.");
- 
- if (promptUpper === "" || promptUpper === null) {
-  window.alert("You need to decide! Please try again.");
-  return generatePassword();
- }
-
-  // prompt user to specify lower case letters or not
-  var promptLower = window.prompt("Do you want to include lower case letters? 1 for yes, 2 for no.");
- 
-  if (promptLower === "" || promptLower === null) {
-   window.alert("You need to decide! Please try again.");
-   return generatePassword();
+  var password = "";
+  var passwordParameters = "";
+  // Prompt user to set password length
+  while (true) {
+    passwordLength = parseInt(prompt("Set the length of your password between 18 and 36 characters"));
+    // If user sets a correct length do nothing and move on to the next parameter
+    if (passwordLength >= 18 && passwordLength <= 36) {
+      break;
+    }
+    // If user sets an incorrect length
+    alert("Please select a number between 18 - 36");
+  }
+  // Once user has chosen a valid number, they will choose the rest of the parameters
+  specials = confirm("Select 'OK' if you would like to include special characters");
+  numbers = confirm("Select 'OK' if you would like to include numbers");
+  upCaseLetters = confirm("Select 'OK' if you would like to include uppercase letters");
+  lowCaseLetters = confirm("Select 'OK' if you would like to include lowercase letters");
+  if (confirm.specials, numbers, upCaseLetters, lowCaseLetters === '' || confirm.specials, numbers, upCaseLetters, lowCaseLetters === null) {
+      alert("You must select at least one parameter, please try again.");
+      return generatePassword;
   }
 
-  // prompt user to specify numbers or not
-  var promptNumbers = window.prompt("Do you want to include numbers? 1 for yes, 2 for no.");
- 
- if (promptNumbers === "" || promptNumbers === null) {
-  window.alert("You need to decide! Please try again.");
-  return generatePassword();
- }
-  
-  // prompt user to specify special characters or not
-  var promptSpecial = window.prompt("Do you want to include special characters or not? 1 for yes, 2 for no.");
- 
- if (promptSpecial === "" || promptSpecial === null) {
-  window.alert("You need to decide! Please try again.");
-  return generatePassword();
- }
-};
+  // Function to concat all possible true options and pass them to the password variable
+var passwordArray = []
+if (specials) 
+  password.concat(specials)
+if (numbers) 
+  password.concat(numbers)
+if (upCaseLetters) 
+  password.concat(upCaseLetters)
+if (lowCaseLetters) 
+  password.concat(lowCaseLetters)
+    // else alert("You must select at least one parameter, please try again.")
 
-// console.log(string.fromCharCode(97));
+    // For loop to select random characters from the criteria strings
+    
+    for (var i = 0; i < passwordLength; i++) {
+      password += passwordParameters[Math.floor(Math.random() * passwordParameters.length)]
+    }
+  
+    return password;
+};
 
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
-
-
 
 // Write password to the #password input
 function writePassword() {
