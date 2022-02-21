@@ -11,7 +11,7 @@ var upCaseLetters = lowCaseLetters.map(letter => letter.toUpperCase())
 var generatePassword = function(password, passwordParameters) {
 
   var password = "";
-  var passwordParameters = "";
+  var passwordArray = "";
   // Prompt user to set password length
   while (true) {
     passwordLength = parseInt(prompt("Set the length of your password between 18 and 36 characters"));
@@ -35,20 +35,25 @@ var generatePassword = function(password, passwordParameters) {
   // Function to concat all possible true options and pass them to the password variable
 var passwordArray = []
 if (specials) 
-  password.concat(specials)
+  passwordArray.concat(specials)
 if (numbers) 
-  password.concat(numbers)
+  passwordArray.concat(numbers)
 if (upCaseLetters) 
-  password.concat(upCaseLetters)
+  passwordArray.concat(upCaseLetters)
 if (lowCaseLetters) 
-  password.concat(lowCaseLetters)
+  passwordArray.concat(lowCaseLetters)
     // else alert("You must select at least one parameter, please try again.")
 
-    // For loop to select random characters from the criteria strings
+    // For loop to select random characters from the parameters
     
-    for (var i = 0; i < passwordLength; i++) {
-      password += passwordParameters[Math.floor(Math.random() * passwordParameters.length)]
+    // for (var i = 0; i < passwordLength; i++) {
+      // password += passwordParameters[Math.floor(Math.random() * passwordParameters.length)]
+    // }
+
+    while (password.length < passwordLength) {
+      password += passwordArray[Math.floor(Math.random() * passwordArray.length)];
     }
+    
   
     return password;
 };
