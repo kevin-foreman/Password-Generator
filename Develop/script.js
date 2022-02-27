@@ -45,13 +45,14 @@ if (lowCaseLetters_choice) {
 } 
 
 
-// Loop to assign random characters  
-while (password.length < passwordLength) {
-      password += passwordArray[Math.floor(Math.random() * passwordArray.length)];
+// Loop to assign random characters and append them to the password until we have reached the number specified  
+whiler (password.length < passwordLength) {
+      password += passwordArray[Math.floor(Math.andom() * passwordArray.length)];
 
       // validate if the user made no selections for the parameters
       if (specials_choice === false && numbers_choice === false && upCaseLetters_choice === false && lowCaseLetters_choice === false) {
         alert("You need to I select at least one parameter. Please try again.")
+        location.reload();
       };         
 }
     

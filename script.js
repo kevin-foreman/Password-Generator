@@ -11,7 +11,6 @@ var upCaseLetters = lowCaseLetters.map(letter => letter.toUpperCase())
 var generatePassword = function(password, passwordArray) {
 
   var password = "";
-  var passwordArray = "";
   // Prompt user to set password length
   while (true) {
     var passwordLength = parseInt(prompt("Set the length of your password between 18 and 36 characters"));
@@ -29,7 +28,7 @@ var generatePassword = function(password, passwordArray) {
   var lowCaseLetters_choice = confirm("Select 'OK' if you would like to include lowercase letters");
   
     
-  // Function to concat all possible true options and pass them to the password variable
+  // Array to concat all possible true options and pass them into the array
 var passwordArray = []
 if (specials_choice) {
   passwordArray = passwordArray.concat(specials)
@@ -42,7 +41,7 @@ if (upCaseLetters_choice) {
 }  
 if (lowCaseLetters_choice) { 
   passwordArray = passwordArray.concat(lowCaseLetters)
-} 
+}; 
 
 
 // Loop to assign random characters  
